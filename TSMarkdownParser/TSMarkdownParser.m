@@ -80,6 +80,11 @@ typedef NSFont UIFont;
     [defaultParser addEscapingParsing];
     
     /* block parsing */
+    NSMutableParagraphStyle *listStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    [listStyle setDefaultTabInterval:18];
+    [listStyle setFirstLineHeadIndent:0];
+    [listStyle setHeadIndent:28];
+    
     
     [defaultParser addHeaderParsingWithMaxLevel:0 leadFormattingBlock:^(NSMutableAttributedString *attributedString, NSRange range, __unused NSUInteger level) {
         [attributedString deleteCharactersInRange:range];
@@ -93,6 +98,10 @@ typedef NSFont UIFont;
             [listString appendString:@"\t"];
         [listString appendString:@"•\t"];
         [attributedString replaceCharactersInRange:range withString:listString];
+        
+        // Apply paragraph style attributes to string
+        [attributedString addAttributes:@{NSFontAttributeName:[UIFont fontWithName:defaultFontFamily size:16], NSParagraphStyleAttributeName: listStyle} range:range];
+        
     } textFormattingBlock:^(NSMutableAttributedString *attributedString, NSRange range, NSUInteger level) {
         [TSMarkdownParser addAttributes:weakParser.listAttributes atIndex:level - 1 toString:attributedString range:range];
     }];
