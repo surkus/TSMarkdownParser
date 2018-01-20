@@ -100,7 +100,7 @@ typedef NSFont UIFont;
         [attributedString replaceCharactersInRange:range withString:listString];
         
         // Apply paragraph style attributes to string
-        [attributedString addAttributes:@{NSFontAttributeName:[UIFont fontWithName:defaultFontFamily size:16], NSParagraphStyleAttributeName: listStyle} range:range];
+        [attributedString addAttributes:@{NSParagraphStyleAttributeName: listStyle} range:range];
         
     } textFormattingBlock:^(NSMutableAttributedString *attributedString, NSRange range, NSUInteger level) {
         [TSMarkdownParser addAttributes:weakParser.listAttributes atIndex:level - 1 toString:attributedString range:range];
