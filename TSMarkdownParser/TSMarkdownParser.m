@@ -83,7 +83,7 @@ typedef NSFont UIFont;
     NSMutableParagraphStyle *listStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [listStyle setDefaultTabInterval:18];
     [listStyle setFirstLineHeadIndent:0];
-    [listStyle setHeadIndent:28];
+    [listStyle setHeadIndent:56];
     
     
     [defaultParser addHeaderParsingWithMaxLevel:0 leadFormattingBlock:^(NSMutableAttributedString *attributedString, NSRange range, __unused NSUInteger level) {
