@@ -95,8 +95,8 @@ typedef NSFont UIFont;
     [defaultParser addListParsingWithMaxLevel:0 leadFormattingBlock:^(NSMutableAttributedString *attributedString, NSRange range, NSUInteger level) {
         NSMutableString *listString = [NSMutableString string];
         while (--level)
-            [listString appendString:@"\t"];
-        [listString appendString:@"•\t"];
+            [listString appendString:@"\t\t"];
+        [listString appendString:@"\t•\t"];
         [attributedString replaceCharactersInRange:range withString:listString];
         
         // Apply paragraph style attributes to string
